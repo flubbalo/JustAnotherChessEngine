@@ -14,7 +14,8 @@ int main() {
     // X coord is the same as a tiles file
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
-            board[y][x] = Tile(y + 1, x + 1);
+            board[y][x].setFile(x + 1);
+            board[y][x].setRank(y + 1);
         }
     }
 
