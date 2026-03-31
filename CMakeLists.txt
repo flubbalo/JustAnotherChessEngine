@@ -11,5 +11,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(JustAnotherChessEngine main.cpp
         tile.cpp
-        tile.h)
+        tile.h
+        Piece.cpp
+        Piece.h)
 #target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
