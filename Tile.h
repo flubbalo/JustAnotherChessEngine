@@ -18,11 +18,17 @@ private:
 
 public:
     //constructor
+    Tile();
     Tile(int rank, int file);
 
     //getters
     int getRank();
     int getFile();
+
+    //setters
+    //should only be called for modifying Tiles created without arguments
+    void setRank(int rank);
+    void setFile(int file);
 };
 
 
