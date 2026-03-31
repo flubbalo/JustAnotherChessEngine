@@ -9,5 +9,7 @@ set(CMAKE_CXX_STANDARD 20)
 #find_package(wxWidgets CONFIG REQUIRED)
 ##include(${wxWidgets_USE_FILE})
 
-add_executable(JustAnotherChessEngine main.cpp)
+add_executable(JustAnotherChessEngine main.cpp
+        tile.cpp
+        tile.h)
 #target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
