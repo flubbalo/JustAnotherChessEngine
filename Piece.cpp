@@ -4,6 +4,10 @@
 
 #include "Piece.h"
 
+Tile Piece::getTile() {
+    return location;
+}
+
 int Piece::getValue() {
     return this->value;
 }

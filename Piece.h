@@ -24,7 +24,7 @@ public:
     //should not require a constructor so not included
 
     //getters
-    int getTile();
+    Tile getTile();
     int getValue();
     std::vector<Tile> getValidMoves();
     std::string getTeam();
