@@ -15,3 +15,7 @@ std::vector<Tile> Piece::getValidMoves() {
 std::string Piece::getTeam() {
     return this->team;
 }
+
+void Piece::setTile(Tile location) {
+    this->location = location;
+}
