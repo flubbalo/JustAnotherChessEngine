@@ -13,9 +13,10 @@
 #include <string>
 #include <vector>
 
-class Piece: public Tile {
+class Piece {
 private:
     int value;
+    Tile location;
     std::vector<Tile> validMoves;
     std::string team;
 
@@ -23,9 +24,13 @@ public:
     //should not require a constructor so not included
 
     //getters
+    int getTile();
     int getValue();
     std::vector<Tile> getValidMoves();
     std::string getTeam();
+
+    //setters
+    void setTile(Tile location);
 };
 
 
