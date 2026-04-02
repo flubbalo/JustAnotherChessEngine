@@ -8,7 +8,7 @@ int Piece::getValue() {
     return this->value;
 }
 
-std::vector<std::array<int, 2>> Piece::getValidMoves() {
+std::vector<Tile> Piece::getValidMoves() {
     return this->validMoves;
 }
 
