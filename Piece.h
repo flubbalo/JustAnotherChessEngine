@@ -16,7 +16,7 @@
 class Piece: public Tile {
 private:
     int value;
-    std::vector<int> validMoves;
+    std::vector<std::array<int, 2>> validMoves;
     std::string team;
 
 public:
@@ -24,7 +24,7 @@ public:
 
     //getters
     int getValue();
-    std::vector<int> getValidMoves();
+    std::vector<std::array<int, 2>> getValidMoves();
     std::string getTeam();
 };
 
