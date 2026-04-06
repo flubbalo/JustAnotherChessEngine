@@ -6,17 +6,18 @@
 #define JUSTANOTHERCHESSENGINE_BOARDPANEL_H
 
 #include <wx/wx.h>
-#include "Tile.h"
+#include "Board.h"
 
 class BoardPanel : public wxPanel
 {
 public:
-    BoardPanel(wxWindow* parent, Tile board[8][8]);
+    BoardPanel(wxWindow* parent, Board* board);
 
 private:
-    void CreateButtons(Tile board[8][8]);
+    void CreateButtons();
     void OnTileClicked(wxCommandEvent& event);
 
+    Board* m_board;
     wxButton* m_buttons[8][8];
 };
 

@@ -8,11 +8,16 @@
 // #pragma once
 #include <wx/wx.h>
 
+#include "Board.h"
+
 //replaces int main() as the driving method
 class App : public wxApp
 {
 public:
     virtual bool OnInit();
+
+private:
+    Board* board;
 };
 
 #endif //JUSTANOTHERCHESSENGINE_APP_H

@@ -4,19 +4,20 @@
 
 #include "BoardPanel.h"
 
-BoardPanel::BoardPanel(wxWindow* parent, Tile board[8][8])
-    : wxPanel(parent)
+BoardPanel::BoardPanel(wxWindow* parent, Board* board)
+    : wxPanel(parent), m_board(board)
 {
-    CreateButtons(board);
+    CreateButtons();
 }
 
-void BoardPanel::CreateButtons(Tile board[8][8])
+void BoardPanel::CreateButtons()
 {
     wxGridSizer* grid = new wxGridSizer(8, 8, 0, 0);
 
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
-            wxString label = wxString::Format("R%d F%d", board[y][x].getRank(), board[y][x].getFile());
+            Tile& tile = m_board->getTile(y + 1, x + 1);
+            wxString label = wxString::Format("R%d F%d", tile.getRank(), tile.getFile());
             m_buttons[y][x] = new wxButton(this, wxID_ANY, label);
             m_buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
             grid->Add(m_buttons[y][x], 1, wxEXPAND);

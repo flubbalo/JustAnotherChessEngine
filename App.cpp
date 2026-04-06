@@ -3,11 +3,10 @@
 //
 
 #include "App.h"
-#include "Tile.h"
 #include <wx/sysopt.h>
 #include "BoardPanel.h"
+#include "Board.h"
 
-static Tile board[8][8];
 
 wxIMPLEMENT_APP(App);
 
@@ -16,13 +15,7 @@ bool App::OnInit()
     //ignore warning for now
     wxSystemOptions::SetOption("msw.no-manifest-check", 1);
 
-    //initialize board tiles
-    for (int y = 0; y < 8; y++) {
-        for (int x = 0; x < 8; x++) {
-            board[y][x].setFile(x + 1);
-            board[y][x].setRank(y + 1);
-        }
-    }
+    board = new Board();
 
     //testing output
     // wxString testOut;
@@ -43,16 +36,16 @@ bool App::OnInit()
     // Display board info in a read-only text box
     // wxTextCtrl* output = new wxTextCtrl(panel, wxID_ANY, testOut, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY);
 
-    // Add a text label
-    wxStaticText* label = new wxStaticText(panel, wxID_ANY, "Hello, World!");
-
-    // Add a button
-    wxButton* button = new wxButton(panel, wxID_ANY, "Where button");
-
-    //implement button event
-    button->Bind(wxEVT_BUTTON, [](wxCommandEvent& event) {
-        wxMessageBox("Button was clicked!");
-    });
+    // // Add a text label
+    // wxStaticText* label = new wxStaticText(panel, wxID_ANY, "Hello, World!");
+    //
+    // // Add a button
+    // wxButton* button = new wxButton(panel, wxID_ANY, "Where button");
+    //
+    // //implement button event
+    // button->Bind(wxEVT_BUTTON, [](wxCommandEvent& event) {
+    //     wxMessageBox("Button was clicked!");
+    // });
 
     BoardPanel* boardPanel = new BoardPanel(panel, board);
 
