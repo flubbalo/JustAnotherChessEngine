@@ -8,6 +8,7 @@
 // #pragma once
 #include <wx/wx.h>
 
+//replaces int main() as the driving method
 class App : public wxApp
 {
 public:
