@@ -28,7 +28,9 @@ void BoardPanel::CreateButtons()
             }
 
             grid->Add(buttons[y][x], 1, wxEXPAND);
+            counter++;
         }
+        counter ++;
     }
 
     SetSizer(grid);
