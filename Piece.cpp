@@ -4,22 +4,15 @@
 
 #include "Piece.h"
 
-Tile Piece::getTile() {
-    return location;
-}
 
-int Piece::getValue() {
+int Piece::getValue() const {
     return this->value;
 }
 
-std::vector<Tile> Piece::getValidMoves() {
+std::vector<Tile*> Piece::getValidMoves() {
     return this->validMoves;
 }
 
 std::string Piece::getTeam() {
     return this->team;
-}
-
-void Piece::setTile(Tile location) {
-    this->location = location;
 }

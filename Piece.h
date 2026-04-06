@@ -8,29 +8,27 @@
 #ifndef JUSTANOTHERCHESSENGINE_PIECE_H
 #define JUSTANOTHERCHESSENGINE_PIECE_H
 
-#include "Tile.h"
 
 #include <string>
 #include <vector>
 
+class Tile; //forward declaration
+
 class Piece {
 private:
     int value;
-    Tile location;
-    std::vector<Tile> validMoves;
+    std::vector<Tile*> validMoves;
     std::string team;
 
 public:
     //should not require a constructor so not included
 
     //getters
-    Tile getTile();
-    int getValue();
-    std::vector<Tile> getValidMoves();
+    int getValue() const;
+    std::vector<Tile*> getValidMoves();
     std::string getTeam();
 
     //setters
-    void setTile(Tile location);
 };
 
 
