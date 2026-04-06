@@ -5,6 +5,7 @@
 #include "App.h"
 #include "Tile.h"
 #include <wx/sysopt.h>
+#include "BoardPanel.h"
 
 static Tile board[8][8];
 
@@ -30,8 +31,6 @@ bool App::OnInit()
     // testOut += wxString::Format("Rank = %d, File = %d\n", board[5][3].getRank(), board[5][3].getFile());
     // testOut += wxString::Format("Rank = %d, File = %d\n", board[7][7].getRank(), board[7][7].getFile());
 
-
-
     //basic Frame or Window
     wxFrame* frame = new wxFrame(nullptr, wxID_ANY, "JustAnotherChessEngine", wxDefaultPosition, wxSize(800, 600));
 
@@ -55,9 +54,12 @@ bool App::OnInit()
         wxMessageBox("Button was clicked!");
     });
 
+    BoardPanel* boardPanel = new BoardPanel(panel, board);
 
-    sizer->Add(label, 0, wxALL, 10);   // 10px margin around label
-    sizer->Add(button, 0, wxALL, 10);  // 10px margin around button
+
+    // sizer->Add(label, 0, wxALL, 10);   // 10px margin around label
+    // sizer->Add(button, 0, wxALL, 10);  // 10px margin around button
+    sizer->Add(boardPanel, 1, wxEXPAND | wxALL, 10);
     // sizer->Add(output, 1, wxEXPAND | wxALL, 10);
     panel->SetSizer(sizer);
 
