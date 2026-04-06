@@ -17,8 +17,8 @@ private:
     void CreateButtons();
     void OnTileClicked(wxCommandEvent& event);
 
-    Board* m_board;
-    wxButton* m_buttons[8][8];
+    Board* board;
+    wxButton* buttons[8][8];
 };
 
 
