@@ -14,7 +14,10 @@ public:
     BoardPanel(wxWindow* parent, Board* board);
 
 private:
+    //called on construction
     void CreateButtons();
+
+    //calls whatever logic is put into this function on click
     void OnTileClicked(wxCommandEvent& event);
 
     Board* board;

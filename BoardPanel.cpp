@@ -39,5 +39,8 @@ void BoardPanel::CreateButtons()
 void BoardPanel::OnTileClicked(wxCommandEvent& event)
 {
     wxButton* clicked = dynamic_cast<wxButton*>(event.GetEventObject());
-    wxMessageBox("Clicked: " + clicked->GetLabel());
+    // std::string s(1, clicked->GetBackgroundColour().);
+    // wxMessageBox("Clicked: " + clicked->GetLabel());
+    //will invert colors
+    clicked->SetBackgroundColour(wxColour(clicked->GetBackgroundColour().GetBlue(),0,clicked->GetBackgroundColour().GetRed()));
 }
