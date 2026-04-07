@@ -33,6 +33,7 @@ bool App::OnInit()
 
     // BoardPanel* boardPanel = new BoardPanel(panel, board);
 
+    currentScene = nullptr;
     showScene(new MainMenu(frame, this));
 
     // sizer->Add(label, 0, wxALL, 10);   // 10px margin around label
@@ -46,9 +47,9 @@ bool App::OnInit()
 }
 
 void App::showScene(wxPanel* scene) {
-    if (currentScene) {
+    if (currentScene != nullptr) {
         mainSizer->Detach(currentScene);
-        // currentScene->Destroy();
+        currentScene->Destroy();
     }
 
     currentScene = scene;
