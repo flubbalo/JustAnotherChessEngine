@@ -15,9 +15,13 @@ class App : public wxApp
 {
 public:
     virtual bool OnInit();
+    void showScene(wxPanel* scene);
 
 private:
     Board* board;
+    wxFrame* frame;
+    wxPanel* currentScene;
+    wxBoxSizer* mainSizer;
 };
 
 #endif //JUSTANOTHERCHESSENGINE_APP_H

@@ -6,6 +6,7 @@
 #include <wx/sysopt.h>
 #include "BoardPanel.h"
 #include "Board.h"
+#include "MainMenu.h"
 
 
 wxIMPLEMENT_APP(App);
@@ -25,13 +26,14 @@ bool App::OnInit()
     // testOut += wxString::Format("Rank = %d, File = %d\n", board[7][7].getRank(), board[7][7].getFile());
 
     //basic Frame or Window
-    wxFrame* frame = new wxFrame(nullptr, wxID_ANY, "JustAnotherChessEngine", wxDefaultPosition, wxSize(800, 600));
+    frame = new wxFrame(nullptr, wxID_ANY, "JustAnotherChessEngine", wxDefaultPosition, wxSize(800, 600));
 
     //create new wxPanel object
-    wxPanel* panel = new wxPanel(frame);
+    // wxPanel* panel = new wxPanel(frame);
 
     //create new wxBoxSizer object
-    wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
+    mainSizer = new wxBoxSizer(wxVERTICAL);
+    frame->SetSizer(mainSizer);
 
     // Display board info in a read-only text box
     // wxTextCtrl* output = new wxTextCtrl(panel, wxID_ANY, testOut, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY);
@@ -47,15 +49,29 @@ bool App::OnInit()
     //     wxMessageBox("Button was clicked!");
     // });
 
-    BoardPanel* boardPanel = new BoardPanel(panel, board);
+    // MainMenu* mainMenu = new MainMenu(panel);
 
+    // BoardPanel* boardPanel = new BoardPanel(panel, board);
+
+    showScene(new MainMenu(frame, this));
 
     // sizer->Add(label, 0, wxALL, 10);   // 10px margin around label
     // sizer->Add(button, 0, wxALL, 10);  // 10px margin around button
-    sizer->Add(boardPanel, 1, wxEXPAND | wxALL, 10);
+    // sizer->Add(boardPanel, 1, wxEXPAND | wxALL, 10);
     // sizer->Add(output, 1, wxEXPAND | wxALL, 10);
-    panel->SetSizer(sizer);
+    // panel->SetSizer(sizer);
 
     frame->Show();
     return true;
+}
+
+void App::showScene(wxPanel* scene) {
+    if (currentScene) {
+        mainSizer->Detach(currentScene);
+        currentScene->Destroy();
+    }
+
+    currentScene = scene;
+    mainSizer->Add(currentScene, 1, wxEXPAND);
+    mainSizer->Layout();
 }

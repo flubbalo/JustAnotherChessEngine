@@ -20,5 +20,7 @@ add_executable(JustAnotherChessEngine main.cpp
         BoardPanel.h
         Board.cpp
         Board.h
+        MainMenu.cpp
+        MainMenu.h
 )
 target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
