@@ -16,7 +16,7 @@ bool App::OnInit()
     //ignore warning for now
     // wxSystemOptions::SetOption("msw.no-manifest-check", 1);
 
-    // board = new Board();
+    board = new Board();
 
 
     //basic Frame or Window
@@ -54,4 +54,12 @@ void App::showScene(wxPanel* scene) {
     currentScene = scene;
     mainSizer->Add(currentScene, 1, wxEXPAND);
     mainSizer->Layout();
+}
+
+wxFrame* App::getFrame() {
+    return frame;
+}
+
+Board* App::getBoard() {
+    return board;
 }

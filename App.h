@@ -16,6 +16,8 @@ class App : public wxApp
 public:
     virtual bool OnInit();
     void showScene(wxPanel* scene);
+    wxFrame* getFrame();
+    Board* getBoard();
 
 private:
     Board* board;

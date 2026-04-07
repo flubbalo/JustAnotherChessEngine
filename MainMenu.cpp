@@ -4,6 +4,9 @@
 
 #include "MainMenu.h"
 
+#include "App.h"
+#include "BoardPanel.h"
+
 
 MainMenu::MainMenu(wxWindow *parent, App *app) : wxPanel(parent), app(app) {
 
@@ -27,5 +30,6 @@ MainMenu::MainMenu(wxWindow *parent, App *app) : wxPanel(parent), app(app) {
 
 void MainMenu::onOption(wxCommandEvent& event) {
     wxButton* clicked = dynamic_cast<wxButton*>(event.GetEventObject());
-    wxMessageBox("Clicked: " + clicked->GetLabel());
+    // wxMessageBox("Clicked: " + clicked->GetLabel());
+    app->showScene(new BoardPanel(app->getFrame(), app->getBoard()));
 }
