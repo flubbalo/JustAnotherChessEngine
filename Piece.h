@@ -13,20 +13,24 @@
 #include <vector>
 
 class Tile; //forward declaration
+class Board;
 
 class Piece {
 private:
     int value;
     std::vector<Tile*> validMoves;
     std::string team;
+    std::string name;
+    Board* board;
 
 public:
-    //should not require a constructor so not included
+    Piece(Board* board, int rank, int file, std::string name);
 
     //getters
     int getValue() const;
     std::vector<Tile*> getValidMoves();
     std::string getTeam();
+    std::string getName();
 
     //setters
 };
