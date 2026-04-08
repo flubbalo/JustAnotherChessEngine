@@ -2,6 +2,7 @@
 #include "Tile.h"
 #include "Board.h"
 #include "Piece.h"
+#include "TestPiece.h"
 
 using namespace std;
 
@@ -28,9 +29,9 @@ int main() {
 
     Board* board = new Board();
 
-    new Piece(board, 2, 2, "test");
+    new TestPiece(board, 4, 4, "test");
 
-    cout << board->getTile(2,2).getPiece()->getName();
+    cout << board->getTile(4,4)->getPiece()->getName();
 
     return 0;
     // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.

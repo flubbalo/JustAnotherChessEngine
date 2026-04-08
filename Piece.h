@@ -16,14 +16,15 @@ class Tile; //forward declaration
 class Board;
 
 class Piece {
-private:
-    int value;
+protected:
+    int value, rank, file;
     std::vector<Tile*> validMoves;
     std::string team;
     std::string name;
     Board* board;
 
 public:
+    Piece();
     Piece(Board* board, int rank, int file, std::string name);
 
     //getters

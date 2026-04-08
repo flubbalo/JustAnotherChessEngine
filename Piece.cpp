@@ -6,8 +6,12 @@
 
 #include "Board.h"
 
+Piece::Piece() {
+
+}
+
 Piece::Piece(Board *board, int rank, int file, std::string name) : board(board) {
-    board->getTile(rank, file).setPiece(this);
+    board->getTile(rank, file)->setPiece(this);
     this->name = name;
 }
 

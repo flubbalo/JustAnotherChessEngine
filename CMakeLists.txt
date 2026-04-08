@@ -15,5 +15,7 @@ add_executable(JustAnotherChessEngine main.cpp
         Piece.cpp
         Piece.h
         Board.cpp
-        Board.h)
+        Board.h
+        TestPiece.cpp
+        TestPiece.h)
 #target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
