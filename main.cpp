@@ -47,6 +47,7 @@ int main() {
 
 void testTilePiece(Board* board, int rank, int file) {
     if (board->getTile(rank,file)->getPiece() != nullptr) {
+        // cout << board->getTile(rank,file)->getPiece() << endl;
         cout << "Piece at " << rank << "," << file << ": " << board->getTile(4,4)->getPiece()->getName() << endl;
     } else {
         cout << "Piece at " << rank << "," << file << ": NULL" << endl;

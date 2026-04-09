@@ -44,9 +44,12 @@ void Piece::movePiece() {
 
     //move piece to new location
     board->getTile(validMoves[selection - 1]->getRank(), validMoves[selection - 1]->getFile())->setPiece(this);
+    std::cout << "Piece moved" << std::endl;
     //remove piece from current location
     board->getTile(rank, file)->setPiece(nullptr);
+    std::cout << "Pointer removed" << std::endl;
     //update Rank and File of piece
     this->rank = validMoves[selection - 1]->getRank();
     this->file = validMoves[selection - 1]->getFile();
+    std::cout << "Rank and file updated" << std::endl;
 }
