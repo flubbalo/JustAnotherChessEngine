@@ -13,22 +13,32 @@
 #include <vector>
 
 class Tile; //forward declaration
+class Board;
 
 class Piece {
-private:
-    int value;
+protected:
+    int value, rank, file;
     std::vector<Tile*> validMoves;
     std::string team;
+    std::string name;
+    Board* board;
+
 
 public:
-    //should not require a constructor so not included
+    Piece();
+    Piece(Board* board, int rank, int file, std::string name);
 
-    //getters
+    //getter
     int getValue() const;
     std::vector<Tile*> getValidMoves();
     std::string getTeam();
+    std::string getName();
+    void movePiece();
 
     //setters
+
+    //declared so can be universally called but not defined because not necessary
+    virtual void calculateMoves() = 0;
 };
 
 

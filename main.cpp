@@ -1,9 +1,13 @@
 #include <iostream>
 #include "Tile.h"
+#include "Board.h"
+#include "Piece.h"
+#include "TestPiece.h"
 
 using namespace std;
 
-static Tile board[8][8];
+// static Tile board[8][8];
+void testTilePiece(Board* board, int rank, int file);
 
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 // int main() {
