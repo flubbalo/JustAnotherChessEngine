@@ -14,12 +14,20 @@ Tile::Tile(int rank, int file) {
     this->file = file;
 }
 
-int Tile::getRank() {
+bool Tile::isOccupied() const {
+    return piece != nullptr;
+}
+
+int Tile::getRank() const {
     return this->rank;
 }
 
-int Tile::getFile() {
+int Tile::getFile() const {
     return this->file;
+}
+
+Piece* Tile::getPiece() const {
+    return this->piece;
 }
 
 void Tile::setRank(int rank) {
@@ -28,4 +36,8 @@ void Tile::setRank(int rank) {
 
 void Tile::setFile(int file) {
     this->file = file;
+}
+
+void Tile::setPiece(Piece* piece) {
+    this->piece = piece;
 }
