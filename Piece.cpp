@@ -10,7 +10,7 @@ Piece::Piece() {
 
 }
 
-Piece::Piece(Board *board, int rank, int file, std::string name) : board(board) {
+Piece::Piece(Board *board, int rank, int file, std::string name) : board(board), rank(rank), file(file) {
     board->getTile(rank, file)->setPiece(this);
     this->name = name;
 }

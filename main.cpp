@@ -7,6 +7,7 @@
 using namespace std;
 
 // static Tile board[8][8];
+void testTilePiece(Board* board, int rank, int file);
 
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main() {
@@ -31,14 +32,23 @@ int main() {
 
     new TestPiece(board, 4, 4, "test");
 
-    cout << "Piece at 4,4: " << board->getTile(4,4)->getPiece()->getName() << endl;
+    testTilePiece(board, 4, 4);
 
     board->getTile(4,4)->getPiece()->calculateMoves();
     board->getTile(4,4)->getPiece()->movePiece();
 
-    cout << "Piece at 4,4: " << board->getTile(4,4)->getPiece()->getName() << endl;
-    cout << "Piece at 2,4: " << board->getTile(2,4)->getPiece()->getName();
+    testTilePiece(board, 2, 4);
+    testTilePiece(board, 4, 4);
+
 
     return 0;
     // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
+}
+
+void testTilePiece(Board* board, int rank, int file) {
+    if (board->getTile(rank,file)->getPiece() != nullptr) {
+        cout << "Piece at " << rank << "," << file << ": " << board->getTile(4,4)->getPiece()->getName() << endl;
+    } else {
+        cout << "Piece at " << rank << "," << file << ": NULL" << endl;
+    }
 }
