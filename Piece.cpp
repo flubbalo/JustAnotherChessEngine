@@ -3,7 +3,7 @@
 //
 
 #include "Piece.h"
-
+#include <iostream>
 #include "Board.h"
 
 Piece::Piece() {
@@ -29,4 +29,24 @@ std::string Piece::getTeam() {
 
 std::string Piece::getName() {
     return this->name;
+}
+
+void Piece::movePiece() {
+    std::cout << "Pick a Move:" << std::endl;
+    int selection;
+    int counter = 1;
+    for (Tile* tile : this->validMoves) {
+        std::cout << counter << ": Rank" << tile->getRank() << ", File" << tile->getFile() << std::endl;
+        counter++;
+    }
+
+    std::cin >> selection;
+
+    //move piece to new location
+    board->getTile(validMoves[selection - 1]->getRank(), validMoves[selection - 1]->getFile())->setPiece(this);
+    //remove piece from current location
+    board->getTile(rank, file)->setPiece(nullptr);
+    //update Rank and File of piece
+    this->rank = validMoves[selection - 1]->getRank();
+    this->file = validMoves[selection - 1]->getFile();
 }

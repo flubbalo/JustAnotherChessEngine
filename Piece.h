@@ -23,17 +23,22 @@ protected:
     std::string name;
     Board* board;
 
+
 public:
     Piece();
     Piece(Board* board, int rank, int file, std::string name);
 
-    //getters
+    //getter
     int getValue() const;
     std::vector<Tile*> getValidMoves();
     std::string getTeam();
     std::string getName();
+    void movePiece();
 
     //setters
+
+    //declared so can be universally called but not defined because not necessary
+    virtual void calculateMoves() = 0;
 };
 
 

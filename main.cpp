@@ -31,7 +31,13 @@ int main() {
 
     new TestPiece(board, 4, 4, "test");
 
-    cout << board->getTile(4,4)->getPiece()->getName();
+    cout << "Piece at 4,4: " << board->getTile(4,4)->getPiece()->getName() << endl;
+
+    board->getTile(4,4)->getPiece()->calculateMoves();
+    board->getTile(4,4)->getPiece()->movePiece();
+
+    cout << "Piece at 4,4: " << board->getTile(4,4)->getPiece()->getName() << endl;
+    cout << "Piece at 2,4: " << board->getTile(2,4)->getPiece()->getName();
 
     return 0;
     // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
