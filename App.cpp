@@ -7,6 +7,7 @@
 #include "BoardPanel.h"
 #include "Board.h"
 #include "MainMenu.h"
+#include "TestPiece.h"
 
 
 wxIMPLEMENT_APP(App);
@@ -32,6 +33,8 @@ bool App::OnInit()
     // MainMenu* mainMenu = new MainMenu(panel);
 
     // BoardPanel* boardPanel = new BoardPanel(panel, board);
+
+    TestPiece* test = new TestPiece(board, 4, 4, "test");
 
     currentScene = nullptr;
     showScene(new MainMenu(frame, this));
