@@ -7,6 +7,7 @@
 
 #include <wx/wx.h>
 #include "Board.h"
+#include <vector>
 
 class BoardPanel : public wxPanel
 {
@@ -22,6 +23,7 @@ private:
 
     Board* board;
     wxButton* buttons[8][8];
+    std::vector<wxButton*> validButtons;
 };
 
 

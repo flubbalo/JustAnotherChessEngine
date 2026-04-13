@@ -41,11 +41,31 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
 {
     wxButton* clicked = dynamic_cast<wxButton*>(event.GetEventObject());
     Tile* tile = static_cast<Tile*>(clicked->GetClientData());
+    std::vector<Tile*> validMoves;
     // wxMessageBox("Clicked: " + clicked->GetLabel());
     // //will invert colors
     // clicked->SetBackgroundColour(wxColour(clicked->GetBackgroundColour().GetBlue(),0,clicked->GetBackgroundColour().GetRed()));
     if (tile->getPiece() != nullptr) {
         wxMessageBox("Tile " + clicked->GetLabel() + " has a " + tile->getPiece()->getName());
+        //further to do
+        //call calculate moves
+        tile->getPiece()->calculateMoves();
+        validMoves = tile->getPiece()->getValidMoves();
+        //display calculated moves
+        for (Tile* tileTest : validMoves) {
+            //find Button with corresponding Tile
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    if (tileTest == buttons[i][j]->GetClientData() ) {
+                        // validButtons.push_back(buttons[i][j]);
+                        buttons[i][j]->SetBackgroundColour(wxColour(0,255,0));
+                    }
+                }
+            }
+            //change Button color
+        }
+        //disable buttons that are not in calculated moves
+        //pass selected button to move piece
     } else {
         wxMessageBox("Tile" + clicked->GetLabel() + " has nothing.");
     }
