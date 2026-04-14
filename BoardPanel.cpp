@@ -60,7 +60,7 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
                     buttons[i][j]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
                     if (tileTest == buttons[i][j]->GetClientData() ) {
                         // validButtons.push_back(buttons[i][j]);
-                        // buttons[i][j]->SetBackgroundColour(wxColour(0,255,0));
+                        buttons[i][j]->SetBackgroundColour(wxColour(0,255,0));
                         // movementTiles& test;
                         // std::cout << "Created tiles object" << std::endl;
                         tileOriginTest = tile;
