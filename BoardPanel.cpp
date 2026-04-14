@@ -57,20 +57,24 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
                     //unbind buttons
-                    buttons[i][j]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
-                    if (tileTest == buttons[i][j]->GetClientData() ) {
+                    buttons[j][i]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
+                    if (tileTest == buttons[j][i]->GetClientData() ) {
                         // validButtons.push_back(buttons[i][j]);
-                        buttons[i][j]->SetBackgroundColour(wxColour(0,255,0));
+                        buttons[j][i]->SetBackgroundColour(wxColour(0,255,0));
                         // movementTiles& test;
+
+                        //THIS IS THE SOURCE OF THE BUG
+                        //SINCE IT IS IN A FOR LOOP IT ONLY EVER REMEMBERS THE LAST PIECE USED IN THE ARRAY
+                        //NEED DIFFERENT WAY TO PASS THESE TILES TO BUTTON FUNCTION TWO
                         // std::cout << "Created tiles object" << std::endl;
                         tileOriginTest = tile;
-                        std::cout << "Set Tile Origin in tiles object" << std::endl;
+                        // std::cout << "Set Tile Origin in tiles object" << std::endl;
                         tileDestinationTest = tileTest;
-                        std::cout << "Set Tile Destination in tiles object" << std::endl;
+                        // std::cout << "Set Tile Destination in tiles object" << std::endl;
                         // buttons[i][j]->SetClientData(test);
                         // std::cout << "Set button client data" << std::endl;
                         //set these buttons to have a different function on the click event
-                        buttons[i][j]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
+                        buttons[j][i]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
                     }
                 }
             }
@@ -105,14 +109,21 @@ void BoardPanel::OnTileClickedTwo(wxCommandEvent &event) {
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
             // Tile* tile = board->getTile(y + 1, x + 1);
             // buttons[y][x]->SetClientData(tile);
+            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
+            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
         }
     }
+
+    tileOriginTest = nullptr;
+    tileDestinationTest = nullptr;
 }
 
 void BoardPanel::OnTileClickedOrigin(wxCommandEvent &event) {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
+            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
+            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
             Tile* tile = board->getTile(y + 1, x + 1);
             buttons[y][x]->SetClientData(tile);
         }
