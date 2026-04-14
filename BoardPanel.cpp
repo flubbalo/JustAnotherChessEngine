@@ -56,17 +56,40 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
             //find Button with corresponding Tile
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
+                    //unbind buttons
+                    buttons[i][j]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
                     if (tileTest == buttons[i][j]->GetClientData() ) {
                         // validButtons.push_back(buttons[i][j]);
-                        buttons[i][j]->SetBackgroundColour(wxColour(0,255,0));
+                        // buttons[i][j]->SetBackgroundColour(wxColour(0,255,0));
+                        //set these buttons to have a different function on the click event
+                        buttons[i][j]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
                     }
                 }
             }
             //change Button color
         }
-        //disable buttons that are not in calculated moves
-        //pass selected button to move piece
+        clicked->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
+
+        //set current button to reset to original boardpanel state
+
     } else {
         wxMessageBox("Tile" + clicked->GetLabel() + " has nothing.");
     }
+}
+
+void BoardPanel::OnTileClickedTwo(wxCommandEvent &event) {
+    wxButton* clicked = dynamic_cast<wxButton*>(event.GetEventObject());
+    wxMessageBox("Can move here");
+    // Tile* tileTarget = static_cast<Tile*>(clicked->GetClientData());
+    // // //need to get tileOrigin passed in here somehow
+    // tileOrigin->getPiece()->movePiece(tileOrigin, tileTarget);
+}
+
+void BoardPanel::OnTileClickedOrigin(wxCommandEvent &event) {
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
+        }
+    }
+    wxMessageBox("Undo piece selection");
 }

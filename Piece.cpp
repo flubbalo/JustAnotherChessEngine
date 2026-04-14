@@ -53,3 +53,10 @@ void Piece::movePiece() {
     this->file = validMoves[selection - 1]->getFile();
     std::cout << "Rank and file updated" << std::endl;
 }
+
+void Piece::movePiece(Tile* tileOrigin, Tile* tileTarget) {
+    board->getTile(tileTarget->getRank(), tileTarget->getFile())->setPiece(this);
+    board->getTile(tileOrigin->getRank(), tileOrigin->getFile())->setPiece(nullptr);
+    this->rank = tileTarget->getRank();
+    this->file = tileTarget->getFile();
+}

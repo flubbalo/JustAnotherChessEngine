@@ -21,6 +21,12 @@ private:
     //calls whatever logic is put into this function on click
     void OnTileClicked(wxCommandEvent& event);
 
+    //funcion to execute piece movement
+    void OnTileClickedTwo(wxCommandEvent& event);
+
+    //function to undo piece selection
+    void OnTileClickedOrigin(wxCommandEvent& event);
+
     Board* board;
     wxButton* buttons[8][8];
     std::vector<wxButton*> validButtons;

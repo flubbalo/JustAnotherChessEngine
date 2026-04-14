@@ -34,6 +34,7 @@ public:
     std::string getTeam();
     std::string getName();
     void movePiece();
+    void movePiece(Tile* tileOrigin, Tile* tileTarget);
 
     //setters
 

@@ -23,7 +23,7 @@ void TestPiece::calculateMoves() {
     validMoves.push_back(board->getTile(rank, file + 2));
     validMoves.push_back(board->getTile(rank, file - 2));
 
-    for (Tile* tile : validMoves) {
-        std::cout << "Can move to:" << tile->getRank() << " " << tile->getFile() << std::endl;
-    }
+    // for (Tile* tile : validMoves) {
+    //     std::cout << "Can move to:" << tile->getRank() << " " << tile->getFile() << std::endl;
+    // }
 }
