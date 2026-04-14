@@ -13,6 +13,12 @@ class BoardPanel : public wxPanel
 {
 public:
     BoardPanel(wxWindow* parent, Board* board);
+    // struct movementTiles {
+    //     Tile* tileOrigin;
+    //     Tile* tileDestination;
+    // };
+    Tile* tileOriginTest;
+    Tile* tileDestinationTest;
 
 private:
     //called on construction

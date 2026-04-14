@@ -61,6 +61,14 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
                     if (tileTest == buttons[i][j]->GetClientData() ) {
                         // validButtons.push_back(buttons[i][j]);
                         // buttons[i][j]->SetBackgroundColour(wxColour(0,255,0));
+                        // movementTiles& test;
+                        // std::cout << "Created tiles object" << std::endl;
+                        tileOriginTest = tile;
+                        std::cout << "Set Tile Origin in tiles object" << std::endl;
+                        tileDestinationTest = tileTest;
+                        std::cout << "Set Tile Destination in tiles object" << std::endl;
+                        // buttons[i][j]->SetClientData(test);
+                        // std::cout << "Set button client data" << std::endl;
                         //set these buttons to have a different function on the click event
                         buttons[i][j]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
                     }
@@ -83,12 +91,30 @@ void BoardPanel::OnTileClickedTwo(wxCommandEvent &event) {
     // Tile* tileTarget = static_cast<Tile*>(clicked->GetClientData());
     // // //need to get tileOrigin passed in here somehow
     // tileOrigin->getPiece()->movePiece(tileOrigin, tileTarget);
+    // movementTiles* test = static_cast<movementTiles*>(clicked->GetClientData());
+    // std::cout << "Passed group of tiles" << std::endl;
+    // Tile* tileOrigin = test->tileOrigin;
+    // std::cout << "Set Tile Origin" << std::endl;
+    // Tile* tileDestination = test->tileDestination;
+    // std::cout << "Set Tile Destination" << std::endl;
+    tileOriginTest->getPiece()->movePiece(tileOriginTest, tileDestinationTest);
+
+    //reset board state
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
+            // Tile* tile = board->getTile(y + 1, x + 1);
+            // buttons[y][x]->SetClientData(tile);
+        }
+    }
 }
 
 void BoardPanel::OnTileClickedOrigin(wxCommandEvent &event) {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
+            Tile* tile = board->getTile(y + 1, x + 1);
+            buttons[y][x]->SetClientData(tile);
         }
     }
     wxMessageBox("Undo piece selection");
