@@ -123,7 +123,7 @@ void BoardPanel::SetImagePiece(wxButton *button, std::string imagePath) {
 void BoardPanel::RefreshBoard() {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
-            Tile* tile = board->getTile(x + 1, y + 1);
+            Tile* tile = board->getTile(y + 1, x + 1);
             buttons[y][x]->SetBitmap(wxNullBitmap);
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
             buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
@@ -133,4 +133,5 @@ void BoardPanel::RefreshBoard() {
             }
         }
     }
+    Refresh();
 }
