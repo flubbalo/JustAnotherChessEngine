@@ -35,6 +35,8 @@ bool App::OnInit()
     // BoardPanel* boardPanel = new BoardPanel(panel, board);
 
     TestPiece* test = new TestPiece(board, 4, 4, "test", 0);
+    TestPiece* test2 = new TestPiece(board, 2, 4, "test", 0);
+    TestPiece* test3 = new TestPiece(board, 6, 4, "test", 1);
 
     currentScene = nullptr;
     showScene(new MainMenu(frame, this));
