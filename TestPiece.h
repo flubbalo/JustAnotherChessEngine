@@ -10,7 +10,7 @@
 
 class TestPiece : public Piece{
 public:
-    TestPiece(Board* board, int rank, int file, std::string name);
+    TestPiece(Board* board, int rank, int file, std::string name, int team);
     void calculateMoves();
 
 private:

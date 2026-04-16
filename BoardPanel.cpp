@@ -46,7 +46,7 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
     // //will invert colors
     // clicked->SetBackgroundColour(wxColour(clicked->GetBackgroundColour().GetBlue(),0,clicked->GetBackgroundColour().GetRed()));
     if (tile->getPiece() != nullptr) {
-        wxMessageBox("Tile " + clicked->GetLabel() + " has a " + tile->getPiece()->getName());
+        wxMessageBox("Tile " + clicked->GetLabel() + " has a " + tile->getPiece()->getTeam("team") + " " + tile->getPiece()->getName());
         //further to do
         //call calculate moves
         tile->getPiece()->calculateMoves();
