@@ -10,7 +10,7 @@ Piece::Piece() {
 
 }
 
-Piece::Piece(Board *board, int rank, int file, std::string name) : board(board), rank(rank), file(file) {
+Piece::Piece(Board *board, int rank, int file, std::string name, int team) : board(board), rank(rank), file(file), team(team) {
     board->getTile(rank, file)->setPiece(this);
     this->name = name;
 }
@@ -23,8 +23,16 @@ std::vector<Tile*> Piece::getValidMoves() {
     return this->validMoves;
 }
 
-std::string Piece::getTeam() {
+int Piece::getTeam() {
     return this->team;
+}
+
+std::string Piece::getTeam(std::string x) {
+    if (this->team == 0) {
+        return "White";
+    } else if (this->team == 1) {
+        return "Black";
+    }
 }
 
 std::string Piece::getName() {
