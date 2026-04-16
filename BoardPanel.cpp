@@ -61,8 +61,10 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
 
                     //bind valid moves to new function of onTileClickedTwo, pass it the origin tile
                     if (tileTest == buttonTileMap[buttons[j][i]]) {
-                        buttons[j][i]->SetBackgroundColour(wxColour(0,255,0));
+                        // buttons[j][i]->SetBackgroundColour(wxColour(0,255,0));
+                        buttons[j][i]->SetForegroundColour(wxColour(0,255,0));
                         buttons[j][i]->SetClientData(tile);
+
 
                         //set these buttons to have a different function on the click event
                         buttons[j][i]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
@@ -93,6 +95,7 @@ void BoardPanel::OnTileClickedTwo(wxCommandEvent &event) {
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
             buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
             buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
+            buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
         }
     }
 }
@@ -103,6 +106,7 @@ void BoardPanel::OnTileClickedOrigin(wxCommandEvent &event) {
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
             buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
             buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
+            buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
         }
     }
     wxMessageBox("Undo piece selection");
