@@ -55,14 +55,14 @@ void Piece::movePiece() {
 }
 
 void Piece::movePiece(Tile* tileOrigin, Tile* tileTarget) {
-    std::cout << "Current piece pointer is: " << this << std::endl;
+    // std::cout << "Current piece pointer is: " << this << std::endl;
     board->getTile(tileTarget->getRank(), tileTarget->getFile())->setPiece(this);
-    std::cout << "Successfully moved piece" << std::endl;
-    std::cout << "Target tile piece is: " << tileTarget->getPiece() << std::endl;
+    // std::cout << "Successfully moved piece" << std::endl;
+    // std::cout << "Target tile piece is: " << tileTarget->getPiece() << std::endl;
     board->getTile(tileOrigin->getRank(), tileOrigin->getFile())->setPiece(nullptr);
-    std::cout << "Piece removed from origin" << std::endl;
+    // std::cout << "Piece removed from origin" << std::endl;
     this->rank = tileTarget->getRank();
-    std::cout << "Set new rank" << std::endl;
+    // std::cout << "Set new rank" << std::endl;
     this->file = tileTarget->getFile();
-    std::cout << "Set new file" << std::endl;
+    // std::cout << "Set new file" << std::endl;
 }
