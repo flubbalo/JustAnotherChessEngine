@@ -3,8 +3,8 @@
 #include "Tile.h"
 #include <iostream>
 
-Knight::Knight(Board* board, int rank, int file, std::string name)
-    : Piece(board, rank, file, name), board(board)
+Knight::Knight(Board* board, int rank, int file, std::string name, int team)
+    : Piece(board, rank, file, name, team ), board(board)
 {
     board->getTile(rank, file)->setPiece(this);
 }

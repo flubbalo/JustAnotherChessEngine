@@ -11,7 +11,7 @@ private:
     Board* board;
 
 public:
-    Bishop(Board* board, int rank, int file, std::string name);
+    Bishop(Board* board, int rank, int file, std::string name,int team);
     void calculateMoves() override;
 };
 

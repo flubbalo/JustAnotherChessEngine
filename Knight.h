@@ -11,7 +11,7 @@ private:
     Board* board;
 
 public:
-    Knight(Board* board, int rank, int file, std::string name);
+    Knight(Board* board, int rank, int file, std::string name, int team);
     void calculateMoves() override;
 };
 

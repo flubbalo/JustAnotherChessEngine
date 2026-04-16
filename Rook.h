@@ -11,7 +11,7 @@ private:
     Board* board;
 
 public:
-    Rook(Board* board, int rank, int file, std::string name);
+    Rook(Board* board, int rank, int file, std::string name, int team);
     void calculateMoves() override;
 };
 
