@@ -19,5 +19,7 @@ add_executable(JustAnotherChessEngine main.cpp
         TestPiece.cpp
         TestPiece.h
         Rook.cpp
-        Rook.h)
+        Rook.h
+        Bishop.cpp
+        Bishop.h)
 #target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
