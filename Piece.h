@@ -22,6 +22,14 @@ protected:
     std::string name;
     Board* board;
 
+    //function for checking if a tile is occupied to be used inside calculate moves
+    //takes as input a Tile
+    //checks if tile is empty or not
+    //checks if tile is not empty, if piece is on other team
+    //returns bool
+    //returns TRUE if tile IS NOT VALID because of occupied piece
+    bool isOccupied(Tile* tile);
+
 
 public:
     Piece();
@@ -34,11 +42,15 @@ public:
     std::string getTeam(std::string x);
     std::string getName();
     void movePiece();
+    void movePiece(Tile* tileOrigin, Tile* tileTarget);
 
     //setters
 
     //declared so can be universally called but not defined because not necessary
     virtual void calculateMoves() = 0;
+
+
+
 };
 
 
