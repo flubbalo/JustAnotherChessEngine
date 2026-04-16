@@ -14,6 +14,7 @@ wxIMPLEMENT_APP(App);
 
 bool App::OnInit()
 {
+    wxInitAllImageHandlers();
     //ignore warning for now
     // wxSystemOptions::SetOption("msw.no-manifest-check", 1);
 

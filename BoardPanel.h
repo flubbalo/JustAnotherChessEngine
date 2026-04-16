@@ -34,6 +34,11 @@ private:
     //function to undo piece selection
     void OnTileClickedOrigin(wxCommandEvent& event);
 
+    //function to set image of button
+    void SetImagePiece(wxButton* button, std::string imagePath);
+
+    //function to refresh board
+
     Board* board;
     wxButton* buttons[8][8];
     std::vector<wxButton*> validButtons;

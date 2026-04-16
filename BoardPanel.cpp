@@ -21,6 +21,11 @@ void BoardPanel::CreateButtons()
             wxString label = wxString::Format("R%d F%d", tile->getRank(), tile->getFile());
             buttons[y][x] = new wxButton(this, wxID_ANY, label);
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
+
+            if (tile->getPiece() != nullptr)
+                SetImagePiece(buttons[y][x], tile->getPiece()->getImagePath());
+
+
             if (counter % 2 == 0) {
                 buttons[y][x]->SetBackgroundColour(wxColour(255,0,0));
             } else {
@@ -110,4 +115,13 @@ void BoardPanel::OnTileClickedOrigin(wxCommandEvent &event) {
         }
     }
     wxMessageBox("Undo piece selection");
+}
+
+void BoardPanel::SetImagePiece(wxButton *button, std::string imagePath) {
+    wxImage image(imagePath, wxBITMAP_TYPE_PNG);
+
+    image = image.Scale(10, 10, wxIMAGE_QUALITY_HIGH);
+    wxBitmap bitmap(image);
+    button->SetBitmap(bitmap);
+    button->SetBitmapPosition(static_cast<wxDirection>(wxCENTER));
 }

@@ -39,6 +39,10 @@ std::string Piece::getName() {
     return this->name;
 }
 
+std::string Piece::getImagePath() {
+    return this->imagePath;
+}
+
 void Piece::movePiece() {
     std::cout << "Pick a Move:" << std::endl;
     int selection;

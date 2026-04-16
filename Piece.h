@@ -20,6 +20,7 @@ protected:
     int value, rank, file, team;
     std::vector<Tile*> validMoves;
     std::string name;
+    std::string imagePath;
     Board* board;
 
     //function for checking if a tile is occupied to be used inside calculate moves
@@ -41,6 +42,9 @@ public:
     int getTeam();
     std::string getTeam(std::string x);
     std::string getName();
+    std::string getImagePath();
+
+
     void movePiece();
     void movePiece(Tile* tileOrigin, Tile* tileTarget);
 
