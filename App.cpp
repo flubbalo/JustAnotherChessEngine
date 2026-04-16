@@ -36,7 +36,9 @@ bool App::OnInit()
     // BoardPanel* boardPanel = new BoardPanel(panel, board);
 
     TestPiece* test = new TestPiece(board, 4, 4, "test", 0);
+    std::cout << std::endl << "Test Piece 1 Pointer: " << test << std::endl;
     TestPiece* test2 = new TestPiece(board, 2, 4, "test", 0);
+    std::cout << std::endl << "Test Piece 2 Pointer: " << test2 << std::endl;
     TestPiece* test3 = new TestPiece(board, 6, 4, "test", 1);
 
     currentScene = nullptr;

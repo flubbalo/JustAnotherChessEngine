@@ -127,6 +127,8 @@ void BoardPanel::RefreshBoard() {
             buttons[y][x]->SetBitmap(wxNullBitmap);
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
             buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
+            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
+            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
 
             if (tile->getPiece() != nullptr) {
                 SetImagePiece(buttons[y][x], tile->getPiece()->getImagePath());
