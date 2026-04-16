@@ -30,7 +30,7 @@ int main() {
 
     Board* board = new Board();
 
-    new TestPiece(board, 4, 4, "test");
+    new TestPiece(board, 4, 4, "test", 0);
 
     testTilePiece(board, 4, 4);
 
