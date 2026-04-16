@@ -8,15 +8,16 @@
 #include <wx/wx.h>
 #include "Board.h"
 #include <vector>
+#include <map>
 
 class BoardPanel : public wxPanel
 {
 public:
     BoardPanel(wxWindow* parent, Board* board);
-    // struct movementTiles {
-    //     Tile* tileOrigin;
-    //     Tile* tileDestination;
-    // };
+    struct movementTiles {
+        Tile* tileOrigin;
+        Tile* tileDestination;
+    };
     Tile* tileOriginTest;
     Tile* tileDestinationTest;
 
@@ -36,6 +37,7 @@ private:
     Board* board;
     wxButton* buttons[8][8];
     std::vector<wxButton*> validButtons;
+    std::map<wxButton*, Tile*> buttonTileMap;
 };
 
 

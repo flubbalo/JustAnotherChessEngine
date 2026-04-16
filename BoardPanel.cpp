@@ -26,7 +26,7 @@ void BoardPanel::CreateButtons()
             } else {
                 buttons[y][x]->SetBackgroundColour(wxColour(0,0,255));
             }
-            buttons[y][x]->SetClientData(tile);
+            buttonTileMap[buttons[y][x]] = tile;
 
             grid->Add(buttons[y][x], 1, wxEXPAND);
             counter++;
@@ -40,7 +40,7 @@ void BoardPanel::CreateButtons()
 void BoardPanel::OnTileClicked(wxCommandEvent& event)
 {
     wxButton* clicked = dynamic_cast<wxButton*>(event.GetEventObject());
-    Tile* tile = static_cast<Tile*>(clicked->GetClientData());
+    Tile* tile = buttonTileMap[clicked];
     std::vector<Tile*> validMoves;
     // wxMessageBox("Clicked: " + clicked->GetLabel());
     // //will invert colors
@@ -58,20 +58,25 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
                 for (int j = 0; j < 8; j++) {
                     //unbind buttons
                     buttons[j][i]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
-                    if (tileTest == buttons[j][i]->GetClientData() ) {
-                        // validButtons.push_back(buttons[i][j]);
+
+                    //bind valid moves to new function of onTileClickedTwo, pass it the origin tile
+                    if (tileTest == buttonTileMap[buttons[j][i]]) {
                         buttons[j][i]->SetBackgroundColour(wxColour(0,255,0));
-                        // movementTiles& test;
+
 
                         //THIS IS THE SOURCE OF THE BUG
                         //SINCE IT IS IN A FOR LOOP IT ONLY EVER REMEMBERS THE LAST PIECE USED IN THE ARRAY
                         //NEED DIFFERENT WAY TO PASS THESE TILES TO BUTTON FUNCTION TWO
-                        // std::cout << "Created tiles object" << std::endl;
-                        tileOriginTest = tile;
-                        // std::cout << "Set Tile Origin in tiles object" << std::endl;
-                        tileDestinationTest = tileTest;
-                        // std::cout << "Set Tile Destination in tiles object" << std::endl;
+                        // movementTiles* test = new movementTiles();
+                        // // std::cout << "Created tiles object" << std::endl;
+                        // // // std::cout << tile << std::endl;
+                        // // // std::cout << tileTest << std::endl;
+                        // test->tileOrigin = tile;
+                        // // // std::cout << "Set Tile Origin in tiles object" << std::endl;
+                        // test->tileDestination = tileTest;
+                        // // // std::cout << "Set Tile Destination in tiles object" << std::endl;
                         // buttons[i][j]->SetClientData(test);
+
                         // std::cout << "Set button client data" << std::endl;
                         //set these buttons to have a different function on the click event
                         buttons[j][i]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
@@ -92,16 +97,14 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
 void BoardPanel::OnTileClickedTwo(wxCommandEvent &event) {
     wxButton* clicked = dynamic_cast<wxButton*>(event.GetEventObject());
     wxMessageBox("Can move here");
-    // Tile* tileTarget = static_cast<Tile*>(clicked->GetClientData());
-    // // //need to get tileOrigin passed in here somehow
-    // tileOrigin->getPiece()->movePiece(tileOrigin, tileTarget);
     // movementTiles* test = static_cast<movementTiles*>(clicked->GetClientData());
-    // std::cout << "Passed group of tiles" << std::endl;
+    // // std::cout << "Passed group of tiles" << std::endl;
     // Tile* tileOrigin = test->tileOrigin;
-    // std::cout << "Set Tile Origin" << std::endl;
+    // // std::cout << "Set Tile Origin" << std::endl;
     // Tile* tileDestination = test->tileDestination;
-    // std::cout << "Set Tile Destination" << std::endl;
-    tileOriginTest->getPiece()->movePiece(tileOriginTest, tileDestinationTest);
+    // // std::cout << "Set Tile Destination" << std::endl;
+    // tileOrigin->getPiece()->movePiece(tileOrigin, tileDestination);
+    // tileOriginTest->getPiece()->movePiece(tileOriginTest, tileDestinationTest);
 
     //reset board state
     for (int y = 0; y < 8; y++) {
@@ -124,8 +127,8 @@ void BoardPanel::OnTileClickedOrigin(wxCommandEvent &event) {
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
             buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
             buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
-            Tile* tile = board->getTile(y + 1, x + 1);
-            buttons[y][x]->SetClientData(tile);
+            // Tile* tile = board->getTile(y + 1, x + 1);
+            // buttons[y][x]->SetClientData(tile);
         }
     }
     wxMessageBox("Undo piece selection");
