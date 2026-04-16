@@ -32,6 +32,8 @@ std::string Piece::getTeam(std::string x) {
         return "White";
     } else if (this->team == 1) {
         return "Black";
+    } else {
+        return "No Team";
     }
 }
 

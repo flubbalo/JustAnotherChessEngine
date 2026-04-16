@@ -38,7 +38,7 @@ private:
     void SetImagePiece(wxButton* button, std::string imagePath);
 
     //function to refresh board
-
+    void RefreshBoard();
     Board* board;
     wxButton* buttons[8][8];
     std::vector<wxButton*> validButtons;

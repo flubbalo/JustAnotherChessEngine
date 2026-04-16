@@ -95,33 +95,42 @@ void BoardPanel::OnTileClickedTwo(wxCommandEvent &event) {
     tileOrigin->getPiece()->movePiece(tileOrigin, tileDestination);
 
     //reset board state
-    for (int y = 0; y < 8; y++) {
-        for (int x = 0; x < 8; x++) {
-            buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
-            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
-            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
-            buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
-        }
-    }
+    RefreshBoard();
+    // for (int y = 0; y < 8; y++) {
+    //     for (int x = 0; x < 8; x++) {
+    //         buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
+    //         buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
+    //         buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
+    //         buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
+    //     }
+    // }
 }
 
 void BoardPanel::OnTileClickedOrigin(wxCommandEvent &event) {
-    for (int y = 0; y < 8; y++) {
-        for (int x = 0; x < 8; x++) {
-            buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
-            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
-            buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
-            buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
-        }
-    }
+    RefreshBoard();
     wxMessageBox("Undo piece selection");
 }
 
 void BoardPanel::SetImagePiece(wxButton *button, std::string imagePath) {
     wxImage image(imagePath, wxBITMAP_TYPE_PNG);
 
-    image = image.Scale(10, 10, wxIMAGE_QUALITY_HIGH);
+    image = image.Scale(80, 80, wxIMAGE_QUALITY_HIGH);
     wxBitmap bitmap(image);
     button->SetBitmap(bitmap);
-    button->SetBitmapPosition(static_cast<wxDirection>(wxCENTER));
+    // button->SetBitmapPosition();
+}
+
+void BoardPanel::RefreshBoard() {
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            Tile* tile = board->getTile(x + 1, y + 1);
+            buttons[y][x]->SetBitmap(wxNullBitmap);
+            buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
+            buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
+
+            if (tile->getPiece() != nullptr) {
+                SetImagePiece(buttons[y][x], tile->getPiece()->getImagePath());
+            }
+        }
+    }
 }

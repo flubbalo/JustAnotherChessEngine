@@ -13,7 +13,7 @@ TestPiece::TestPiece(Board *board, int rank, int file, std::string name, int tea
     // this->name = name;
     // this->rank = rank;
     // this->file = file;
-    this->imagePath = "./assets/testPiece.png";
+    this->imagePath = "assets/testPiece.png";
 }
 
 void TestPiece::calculateMoves() {
