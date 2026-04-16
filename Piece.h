@@ -17,21 +17,21 @@ class Board;
 
 class Piece {
 protected:
-    int value, rank, file;
+    int value, rank, file, team;
     std::vector<Tile*> validMoves;
-    std::string team;
     std::string name;
     Board* board;
 
 
 public:
     Piece();
-    Piece(Board* board, int rank, int file, std::string name);
+    Piece(Board* board, int rank, int file, std::string name, int team);
 
     //getter
     int getValue() const;
     std::vector<Tile*> getValidMoves();
-    std::string getTeam();
+    int getTeam();
+    std::string getTeam(std::string x);
     std::string getName();
     void movePiece();
 
