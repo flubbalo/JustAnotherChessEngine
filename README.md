@@ -1,6 +1,6 @@
 This is a C++ project created for UCNJ class CST-117-081.2026SP Final Project.
 
-Authored by Dylan Williams and Cleiton Ribeiro De Oliveira.
+Authored by [Dylan Williams](https://github.com/flubbalo) and [Cleiton Ribeiro De Oliveira](https://github.com/CleitonRBD).
 
 This project is meant to demonstrate and utilize multiple common Object Oriented Programming concepts, including but not limited to Inheritance, Polymorphism, Encapsulation.
 This project accomplishes this by aiming to be a self made chess engine wherein users can play chess.
