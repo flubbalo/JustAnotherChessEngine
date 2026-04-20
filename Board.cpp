@@ -8,6 +8,7 @@
 #include "Knight.h"
 #include "King.h"
 #include "Queen.h"
+#include "TestPiece.h"
 
 Board::Board()
 {
@@ -27,6 +28,9 @@ void Board::initBoard()
     turnOrder = 0;
 
     //Initialize new pieces, white pieces
+    for (int i = 1; i < 9; i++) {
+        new TestPiece(this, 7, i, "WhiteTest", 0);
+    }
     new Bishop(this, 8, 3, "WhiteBishopDark", 0);
     new Bishop(this, 8, 6, "WhiteBishopLight", 0);
     new Rook(this, 8, 1, "WhiteRookLeft", 0);
@@ -37,6 +41,9 @@ void Board::initBoard()
     new King(this, 8, 5, "WhiteKing", 0);
 
     //Black Pieces
+    for (int i = 1; i < 9; i++) {
+        new TestPiece(this, 2, i, "BlackTest", 1);
+    }
     new Bishop(this, 1, 3, "BlackBishopLight", 1);
     new Bishop(this, 1, 6, "BlackBishopDark", 1);
     new Rook(this, 1, 1, "BlackRookLeft", 1);
