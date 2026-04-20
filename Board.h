@@ -14,10 +14,19 @@ public:
     //returns Tile object, not reference
     Tile *getTile(int rank, int file);
 
+    //getter
+    int getTurnOrder();
+
+    //setter
+    void setTurnOrder();
+
+
 private:
     void initBoard();
 
     Tile board[8][8];
+
+    int turnOrder;
 
 };
 

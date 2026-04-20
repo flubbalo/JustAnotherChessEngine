@@ -79,6 +79,7 @@ void Piece::movePiece(Tile* tileOrigin, Tile* tileTarget) {
     // std::cout << "Set new rank" << std::endl;
     this->file = tileTarget->getFile();
     // std::cout << "Set new file" << std::endl;
+    board->setTurnOrder();
 }
 
 bool Piece::isOccupied(Tile* tile) {

@@ -92,7 +92,11 @@ void BoardPanel::OnTileClickedTwo(wxCommandEvent &event) {
     wxMessageBox("Can move here");
     Tile* tileDestination = buttonTileMap[clicked];
     Tile* tileOrigin = static_cast<Tile*>(clicked->GetClientData());
-    tileOrigin->getPiece()->movePiece(tileOrigin, tileDestination);
+    if (tileOrigin->getPiece()->getTeam() == board->getTurnOrder()) {
+        tileOrigin->getPiece()->movePiece(tileOrigin, tileDestination);
+    } else {
+        wxMessageBox("Not " + tileOrigin->getPiece()->getTeam("team") + " turn.");
+    }
 
     //reset board state
     RefreshBoard();

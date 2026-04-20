@@ -23,6 +23,9 @@ void Board::initBoard()
         }
     }
 
+    //set turn order to start on white
+    turnOrder = 0;
+
     //Initialize new pieces, white pieces
     new Bishop(this, 8, 3, "WhiteBishopDark", 0);
     new Bishop(this, 8, 6, "WhiteBishopLight", 0);
@@ -48,4 +51,16 @@ Tile *Board::getTile(int rank, int file)
 {
     // Subtract 1 to convert from 1-based rank/file to 0-based array index
     return &board[rank - 1][file - 1];
+}
+
+int Board::getTurnOrder() {
+    return turnOrder;
+}
+
+void Board::setTurnOrder() {
+    if (turnOrder == 0) {
+        turnOrder = 1;
+    } else if (turnOrder == 1) {
+        turnOrder = 0;
+    }
 }
