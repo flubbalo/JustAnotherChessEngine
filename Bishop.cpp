@@ -37,7 +37,7 @@ void Bishop::calculateMoves() {
             }
             else {
 
-                if (tile->getPiece()->getColor() != this->getColor()) {
+                if (tile->getPiece()->getTeam() != this->getTeam()) {
                     validMoves.push_back(tile);
                 }
 
@@ -45,4 +45,8 @@ void Bishop::calculateMoves() {
             }
         }
     }
+
+    // for (Tile* tile : validMoves) {
+    //     std::cout << "Can move to:" << tile->getRank() << " " << tile->getFile() << std::endl;
+    // }
 }
