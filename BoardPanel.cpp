@@ -89,7 +89,7 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
 
 void BoardPanel::OnTileClickedTwo(wxCommandEvent &event) {
     wxButton* clicked = dynamic_cast<wxButton*>(event.GetEventObject());
-    wxMessageBox("Can move here");
+    // wxMessageBox("Can move here");
     Tile* tileDestination = buttonTileMap[clicked];
     Tile* tileOrigin = static_cast<Tile*>(clicked->GetClientData());
     if (tileOrigin->getPiece()->getTeam() == board->getTurnOrder()) {
