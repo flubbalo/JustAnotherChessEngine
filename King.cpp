@@ -8,9 +8,9 @@ King::King(Board* board, int rank, int file, std::string name, int team)
 {
     board->getTile(rank, file)->setPiece(this);
     if (team == 0) {
-        this->imagePath = "assets/testPieceWhite.png";
+        this->imagePath = "assets/whiteking.png";
     } else if (team == 1) {
-        this->imagePath = "assets/testPieceBlack.png";
+        this->imagePath = "assets/blackking.png";
     }
 }
 

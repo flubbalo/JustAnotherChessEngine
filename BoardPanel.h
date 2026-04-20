@@ -26,6 +26,10 @@ private:
     void CreateButtons();
 
     //calls whatever logic is put into this function on click
+    //current logic is to see if a piece is on the tile
+    //if a piece is on the tile, it will update buttons in the list
+    //to highlight where that piece can move and make those buttons selectable to move that piece
+    //disables other buttons
     void OnTileClicked(wxCommandEvent& event);
 
     //funcion to execute piece movement
@@ -37,7 +41,7 @@ private:
     //function to set image of button
     void SetImagePiece(wxButton* button, std::string imagePath);
 
-    //function to refresh board
+    //function to refresh board state
     void RefreshBoard();
     Board* board;
     wxButton* buttons[8][8];
