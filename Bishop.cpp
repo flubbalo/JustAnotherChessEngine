@@ -1,0 +1,57 @@
+#include "Bishop.h"
+#include "Board.h"
+#include "Tile.h"
+#include <iostream>
+
+Bishop::Bishop(Board* board, int rank, int file, std::string name, int team)
+    : Piece(board, rank, file, name, team), board(board)
+{
+    board->getTile(rank, file)->setPiece(this);
+    if (team == 0) {
+        this->imagePath = "assets/testPieceWhite.png";
+    } else if (team == 1) {
+        this->imagePath = "assets/testPieceBlack.png";
+    }
+}
+
+void Bishop::calculateMoves() {
+    validMoves.clear();
+
+    int directions[4][2] = {
+        {1, 1},     
+        {1, -1},    
+        {-1, 1},    
+        {-1, -1}    
+    };
+
+    for (auto& dir : directions) {
+        int r = rank;
+        int f = file;
+
+        while (true) {
+            r += dir[0];
+            f += dir[1];
+
+            if (r < 1 || r > 8 || f < 1 || f > 8)
+                break;
+
+            Tile* tile = board->getTile(r, f);
+
+            if (tile->getPiece() == nullptr) {
+                validMoves.push_back(tile);
+            }
+            else {
+
+                if (tile->getPiece()->getTeam() != this->getTeam()) {
+                    validMoves.push_back(tile);
+                }
+
+                break;
+            }
+        }
+    }
+
+    // for (Tile* tile : validMoves) {
+    //     std::cout << "Can move to:" << tile->getRank() << " " << tile->getFile() << std::endl;
+    // }
+}

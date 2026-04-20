@@ -3,15 +3,36 @@ project(JustAnotherChessEngine)
 
 set(CMAKE_CXX_STANDARD 20)
 
-#set(wxWidgets_USE_STATIC ON)
-#set(CMAKE_PREFIX_PATH "C:\\Users\\reach\\wxWidgets\\install-Debug\\lib\\cmake\\wxWidgets-3.3")
-#
-#find_package(wxWidgets CONFIG REQUIRED)
-##include(${wxWidgets_USE_FILE})
+set(wxWidgets_USE_STATIC ON)
+set(CMAKE_PREFIX_PATH "C:\\Users\\reach\\wxWidgets\\install-Debug\\lib\\cmake\\wxWidgets-3.3")
+
+find_package(wxWidgets CONFIG REQUIRED)
+#include(${wxWidgets_USE_FILE})
 
 add_executable(JustAnotherChessEngine main.cpp
         tile.cpp
         tile.h
         Piece.cpp
-        Piece.h)
-#target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
+        Piece.h
+        App.cpp
+        App.h
+        BoardPanel.cpp
+        BoardPanel.h
+        Board.cpp
+        Board.h
+        MainMenu.cpp
+        MainMenu.h
+        TestPiece.cpp
+        TestPiece.h
+        Bishop.cpp
+        Bishop.h
+        King.cpp
+        King.h
+        Queen.cpp
+        Queen.h
+        Knight.cpp
+        Knight.h
+        Rook.cpp
+        Rook.h
+)
+target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
