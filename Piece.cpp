@@ -70,11 +70,18 @@ void Piece::movePiece() {
 
 void Piece::movePiece(Tile* tileOrigin, Tile* tileTarget) {
     // std::cout << "Current piece pointer is: " << this << std::endl;
+
+    // set Target Tile piece pointer to current piece
     board->getTile(tileTarget->getRank(), tileTarget->getFile())->setPiece(this);
+
     // std::cout << "Successfully moved piece" << std::endl;
     // std::cout << "Target tile piece is: " << tileTarget->getPiece() << std::endl;
+
+    // Remove Origin tile piece pointer
     board->getTile(tileOrigin->getRank(), tileOrigin->getFile())->setPiece(nullptr);
     // std::cout << "Piece removed from origin" << std::endl;
+
+    // update piece rank and file
     this->rank = tileTarget->getRank();
     // std::cout << "Set new rank" << std::endl;
     this->file = tileTarget->getFile();
