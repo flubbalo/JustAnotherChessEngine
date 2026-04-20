@@ -67,7 +67,7 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
                     //bind valid moves to new function of onTileClickedTwo, pass it the origin tile
                     if (tileTest == buttonTileMap[buttons[j][i]]) {
                         // buttons[j][i]->SetBackgroundColour(wxColour(0,255,0));
-                        buttons[j][i]->SetForegroundColour(wxColour(0,255,0));
+                        buttons[j][i]->SetBackgroundColour(wxColour(150,200,200));
                         buttons[j][i]->SetClientData(tile);
 
 
@@ -125,19 +125,29 @@ void BoardPanel::SetImagePiece(wxButton *button, std::string imagePath) {
 }
 
 void BoardPanel::RefreshBoard() {
+    int counter = 1;
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
             Tile* tile = board->getTile(y + 1, x + 1);
             buttons[y][x]->SetBitmap(wxNullBitmap);
             buttons[y][x]->Bind(wxEVT_BUTTON, &BoardPanel::OnTileClicked, this);
-            buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
+            // buttons[y][x]->SetForegroundColour(wxColour(0,0,0));
             buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedTwo, this);
             buttons[y][x]->Unbind(wxEVT_BUTTON, &BoardPanel::OnTileClickedOrigin, this);
 
             if (tile->getPiece() != nullptr) {
                 SetImagePiece(buttons[y][x], tile->getPiece()->getImagePath());
             }
+
+            if (counter % 2 == 0) {
+                buttons[y][x]->SetBackgroundColour(wxColour(100,100,100));
+            } else {
+                buttons[y][x]->SetBackgroundColour(wxColour(207,185,151));
+            }
+
+            counter++;
         }
+        counter++;
     }
     Refresh();
 }
