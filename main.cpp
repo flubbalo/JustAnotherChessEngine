@@ -3,6 +3,7 @@
 #include "Board.h"
 #include "Piece.h"
 #include "TestPiece.h"
+#include "Bishop.h"
 
 using namespace std;
 

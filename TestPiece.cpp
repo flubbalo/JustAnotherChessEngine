@@ -20,7 +20,7 @@ TestPiece::TestPiece(Board *board, int rank, int file, std::string name, int tea
     }
 
 }
-
+// I made a change
 void TestPiece::calculateMoves() {
     validMoves.clear();
 
