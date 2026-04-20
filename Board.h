@@ -12,7 +12,7 @@ public:
     Board();
 
     //returns Tile object, not reference
-    Tile* getTile(int rank, int file);
+    Tile *getTile(int rank, int file);
 
 private:
     void initBoard();

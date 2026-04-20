@@ -32,11 +32,17 @@ std::string Piece::getTeam(std::string x) {
         return "White";
     } else if (this->team == 1) {
         return "Black";
+    } else {
+        return "No Team";
     }
 }
 
 std::string Piece::getName() {
     return this->name;
+}
+
+std::string Piece::getImagePath() {
+    return this->imagePath;
 }
 
 void Piece::movePiece() {
@@ -73,4 +79,24 @@ void Piece::movePiece(Tile* tileOrigin, Tile* tileTarget) {
     // std::cout << "Set new rank" << std::endl;
     this->file = tileTarget->getFile();
     // std::cout << "Set new file" << std::endl;
+}
+
+bool Piece::isOccupied(Tile* tile) {
+    //check if tile has piece
+    if (tile->getPiece() != nullptr) {
+        //there is a piece
+        //check piece team
+        if (tile->getPiece()->getTeam() == this->team) {
+            //if piece matches team, return true
+            //SAME TEAM, CANNOT MOVE
+            return true;
+        } else {
+            //piece does not match, move is still valid
+            //ENEMY TEAM, CAN MOVE
+            return false;
+        }
+    } else {
+        //EMPTY SPACE, CAN MOVE
+        return false;
+    }
 }

@@ -4,8 +4,6 @@
 
 #include "Board.h"
 
-#include <iostream>
-
 Board::Board()
 {
     initBoard();
@@ -21,7 +19,7 @@ void Board::initBoard()
     }
 }
 
-Tile* Board::getTile(int rank, int file)
+Tile *Board::getTile(int rank, int file)
 {
     // Subtract 1 to convert from 1-based rank/file to 0-based array index
     return &board[rank - 1][file - 1];

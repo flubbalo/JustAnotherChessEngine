@@ -7,11 +7,13 @@
 Tile::Tile() {
     this->rank = 0;
     this->file = 0;
+    this->piece = nullptr;
 }
 
 Tile::Tile(int rank, int file) {
     this->rank = rank;
     this->file = file;
+    this->piece = nullptr;
 }
 
 bool Tile::isOccupied() const {
