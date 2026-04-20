@@ -27,9 +27,9 @@ void BoardPanel::CreateButtons()
 
 
             if (counter % 2 == 0) {
-                buttons[y][x]->SetBackgroundColour(wxColour(255,0,0));
+                buttons[y][x]->SetBackgroundColour(wxColour(100,100,100));
             } else {
-                buttons[y][x]->SetBackgroundColour(wxColour(0,0,255));
+                buttons[y][x]->SetBackgroundColour(wxColour(207,185,151));
             }
             buttonTileMap[buttons[y][x]] = tile;
 

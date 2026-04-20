@@ -45,9 +45,9 @@ void TestPiece::calculateMoves() {
         }
     }
 
-    std::cout << std::endl << "NEW CALL OF CALCULATE MOVES" << std::endl;
-    for (Tile* tile : validMoves) {
-        std::cout << "Memory address of tile: " << tile << std::endl;
-        std::cout << "Can move to:" << tile->getRank() << " " << tile->getFile() << std::endl;
-    }
+    // std::cout << std::endl << "NEW CALL OF CALCULATE MOVES" << std::endl;
+    // for (Tile* tile : validMoves) {
+    //     std::cout << "Memory address of tile: " << tile << std::endl;
+    //     std::cout << "Can move to:" << tile->getRank() << " " << tile->getFile() << std::endl;
+    // }
 }

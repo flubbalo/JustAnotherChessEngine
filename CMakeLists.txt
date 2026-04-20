@@ -24,14 +24,15 @@ add_executable(JustAnotherChessEngine main.cpp
         MainMenu.h
         TestPiece.cpp
         TestPiece.h
-        Rook.cpp
-        Rook.h
         Bishop.cpp
         Bishop.h
-        Knight.cpp
-        Knight.h
+        King.cpp
+        King.h
         Queen.cpp
         Queen.h
-        King.cpp
-        King.h)
-#target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
+        Knight.cpp
+        Knight.h
+        Rook.cpp
+        Rook.h
+)
+target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
