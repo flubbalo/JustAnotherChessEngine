@@ -14,7 +14,7 @@ TestPiece::TestPiece(Board *board, int rank, int file, std::string name, int tea
     // this->rank = rank;
     // this->file = file;
 }
-
+// I made a change
 void TestPiece::calculateMoves() {
     validMoves.clear();
 
