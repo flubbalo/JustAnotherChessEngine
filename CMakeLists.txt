@@ -27,5 +27,7 @@ add_executable(JustAnotherChessEngine main.cpp
         Queen.cpp
         Queen.h
         King.cpp
-        King.h)
+        King.h
+        Pawn.cpp
+        Pawn.h)
 #target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
