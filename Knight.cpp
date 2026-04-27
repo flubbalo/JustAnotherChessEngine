@@ -7,6 +7,11 @@ Knight::Knight(Board* board, int rank, int file, std::string name, int team)
     : Piece(board, rank, file, name, team ), board(board)
 {
     board->getTile(rank, file)->setPiece(this);
+    if (team == 0) {
+        this->imagePath = "assets/whitehonse.png";
+    } else if (team == 1) {
+        this->imagePath = "assets/blackhonse.png";
+    }
 }
 
 void Knight::calculateMoves() {
