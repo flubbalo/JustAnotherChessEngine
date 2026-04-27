@@ -19,7 +19,7 @@ void Pawn::calculateMoves() {
 
     int direction;
 
-    if (this->getTeam() == 0) {
+    if (this->getTeam() == 1) {
         direction = 1;
     }
     else {
@@ -34,8 +34,8 @@ void Pawn::calculateMoves() {
         if (forwardTile->getPiece() == nullptr) {
             validMoves.push_back(forwardTile);
 
-            if ((this->getTeam() == 0 && rank == 2) ||
-                (this->getTeam() == 1 && rank == 7)) {
+            if ((this->getTeam() == 1 && rank == 2) ||
+                (this->getTeam() == 0 && rank == 7)) {
 
                 int doubleStepRank = rank + (2 * direction);
                 Tile* doubleForwardTile = board->getTile(doubleStepRank, file);
