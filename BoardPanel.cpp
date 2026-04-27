@@ -53,7 +53,7 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
     // //will invert colors
     // clicked->SetBackgroundColour(wxColour(clicked->GetBackgroundColour().GetBlue(),0,clicked->GetBackgroundColour().GetRed()));
     if (tile->getPiece() != nullptr) {
-        wxMessageBox("Tile " + clicked->GetLabel() + " has a " + tile->getPiece()->getTeam("team") + " " + tile->getPiece()->getName());
+        // wxMessageBox("Tile " + clicked->GetLabel() + " has a " + tile->getPiece()->getTeam("team") + " " + tile->getPiece()->getName());
         //further to do
         //call calculate moves
         tile->getPiece()->calculateMoves();
@@ -86,7 +86,7 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
         //set current button to reset to original boardpanel state
 
     } else {
-        wxMessageBox("Tile" + clicked->GetLabel() + " has nothing.");
+        // wxMessageBox("Tile" + clicked->GetLabel() + " has nothing.");
     }
 }
 

@@ -9,6 +9,7 @@
 #include "King.h"
 #include "Queen.h"
 #include "TestPiece.h"
+#include "Pawn.h"
 
 Board::Board()
 {
@@ -29,7 +30,7 @@ void Board::initBoard()
 
     //Initialize new pieces, white pieces
     for (int i = 1; i < 9; i++) {
-        new TestPiece(this, 7, i, "WhiteTest", 0);
+        new Pawn(this, 7, i, "WhiteTest", 0);
     }
     new Bishop(this, 8, 3, "WhiteBishopDark", 0);
     new Bishop(this, 8, 6, "WhiteBishopLight", 0);
@@ -42,7 +43,7 @@ void Board::initBoard()
 
     //Black Pieces
     for (int i = 1; i < 9; i++) {
-        new TestPiece(this, 2, i, "BlackTest", 1);
+        new Pawn(this, 2, i, "BlackTest", 1);
     }
     new Bishop(this, 1, 3, "BlackBishopLight", 1);
     new Bishop(this, 1, 6, "BlackBishopDark", 1);

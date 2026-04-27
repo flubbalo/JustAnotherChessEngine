@@ -7,6 +7,11 @@ Pawn::Pawn(Board* board, int rank, int file, std::string name, int team)
     : Piece(board, rank, file, name, team), board(board)
 {
     board->getTile(rank, file)->setPiece(this);
+    if (team == 0) {
+        this->imagePath = "assets/whitepawn.png";
+    } else if (team == 1) {
+        this->imagePath = "assets/blackpawn.png";
+    }
 }
 
 void Pawn::calculateMoves() {
@@ -14,7 +19,7 @@ void Pawn::calculateMoves() {
 
     int direction;
 
-    if (this->getColor() == 0) {
+    if (this->getTeam() == 0) {
         direction = 1;
     }
     else {
@@ -29,8 +34,8 @@ void Pawn::calculateMoves() {
         if (forwardTile->getPiece() == nullptr) {
             validMoves.push_back(forwardTile);
 
-            if ((this->getColor() == 0 && rank == 2) ||
-                (this->getColor() == 1 && rank == 7)) {
+            if ((this->getTeam() == 0 && rank == 2) ||
+                (this->getTeam() == 1 && rank == 7)) {
 
                 int doubleStepRank = rank + (2 * direction);
                 Tile* doubleForwardTile = board->getTile(doubleStepRank, file);
@@ -50,7 +55,7 @@ void Pawn::calculateMoves() {
         Tile* leftCapture = board->getTile(newRank, leftFile);
 
         if (leftCapture->getPiece() != nullptr &&
-            leftCapture->getPiece()->getColor() != this->getColor()) {
+            leftCapture->getPiece()->getTeam() != this->getTeam()) {
 
             validMoves.push_back(leftCapture);
             }
@@ -64,7 +69,7 @@ void Pawn::calculateMoves() {
         Tile* rightCapture = board->getTile(newRank, rightFile);
 
         if (rightCapture->getPiece() != nullptr &&
-            rightCapture->getPiece()->getColor() != this->getColor()) {
+            rightCapture->getPiece()->getTeam() != this->getTeam()) {
 
             validMoves.push_back(rightCapture);
             }
