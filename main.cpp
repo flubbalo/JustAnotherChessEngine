@@ -3,6 +3,7 @@
 #include "Board.h"
 #include "Piece.h"
 #include "TestPiece.h"
+#include "Bishop.h"
 
 using namespace std;
 
@@ -30,15 +31,18 @@ int main() {
 
     Board* board = new Board();
 
-    new TestPiece(board, 4, 4, "test", 0);
+    // new TestPiece(board, 4, 4, "test", 0);
 
+    new Bishop(board, 4, 4, "testBishopWhite", 0);
+    new Bishop(board, 2, 2, "testBishopWhiteTwo", 0);
+    new Bishop(board, 6,6, "testBishopBlack", 1);
     testTilePiece(board, 4, 4);
 
     board->getTile(4,4)->getPiece()->calculateMoves();
-    board->getTile(4,4)->getPiece()->movePiece();
+    // board->getTile(4,4)->getPiece()->movePiece();
 
-    testTilePiece(board, 2, 4);
-    testTilePiece(board, 4, 4);
+    // testTilePiece(board, 2, 4);
+    // testTilePiece(board, 4, 4);
 
 
     return 0;

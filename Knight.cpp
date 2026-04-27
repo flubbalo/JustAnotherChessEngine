@@ -35,7 +35,7 @@ void Knight::calculateMoves() {
             }
             else {
 
-                if (tile->getPiece()->getColor() != this->getColor()) {
+                if (tile->getPiece()->getTeam() != this->getTeam()) {
                     validMoves.push_back(tile);
                 }
             }
