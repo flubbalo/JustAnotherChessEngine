@@ -16,7 +16,7 @@ bool App::OnInit()
 {
     wxInitAllImageHandlers();
     //ignore warning for now
-    // wxSystemOptions::SetOption("msw.no-manifest-check", 1);
+    wxSystemOptions::SetOption("msw.no-manifest-check", 1);
 
     board = new Board();
 

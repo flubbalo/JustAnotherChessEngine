@@ -28,8 +28,10 @@ void BoardPanel::CreateButtons()
 
             if (counter % 2 == 0) {
                 buttons[y][x]->SetBackgroundColour(wxColour(100,100,100));
+                buttons[y][x]->SetForegroundColour(wxColour(100,100,100));
             } else {
                 buttons[y][x]->SetBackgroundColour(wxColour(207,185,151));
+                buttons[y][x]->SetForegroundColour(wxColour(207,185,151));
             }
             buttonTileMap[buttons[y][x]] = tile;
 
@@ -51,7 +53,7 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
     // //will invert colors
     // clicked->SetBackgroundColour(wxColour(clicked->GetBackgroundColour().GetBlue(),0,clicked->GetBackgroundColour().GetRed()));
     if (tile->getPiece() != nullptr) {
-        wxMessageBox("Tile " + clicked->GetLabel() + " has a " + tile->getPiece()->getTeam("team") + " " + tile->getPiece()->getName());
+        // wxMessageBox("Tile " + clicked->GetLabel() + " has a " + tile->getPiece()->getTeam("team") + " " + tile->getPiece()->getName());
         //further to do
         //call calculate moves
         tile->getPiece()->calculateMoves();
@@ -68,6 +70,7 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
                     if (tileTest == buttonTileMap[buttons[j][i]]) {
                         // buttons[j][i]->SetBackgroundColour(wxColour(0,255,0));
                         buttons[j][i]->SetBackgroundColour(wxColour(150,200,200));
+                        buttons[j][i]->SetForegroundColour(wxColour(150,200,200));
                         buttons[j][i]->SetClientData(tile);
 
 
@@ -83,7 +86,7 @@ void BoardPanel::OnTileClicked(wxCommandEvent& event)
         //set current button to reset to original boardpanel state
 
     } else {
-        wxMessageBox("Tile" + clicked->GetLabel() + " has nothing.");
+        // wxMessageBox("Tile" + clicked->GetLabel() + " has nothing.");
     }
 }
 
@@ -141,8 +144,10 @@ void BoardPanel::RefreshBoard() {
 
             if (counter % 2 == 0) {
                 buttons[y][x]->SetBackgroundColour(wxColour(100,100,100));
+                buttons[y][x]->SetForegroundColour(wxColour(100,100,100));
             } else {
                 buttons[y][x]->SetBackgroundColour(wxColour(207,185,151));
+                buttons[y][x]->SetForegroundColour(wxColour(207,185,151));
             }
 
             counter++;
