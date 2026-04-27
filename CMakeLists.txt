@@ -35,5 +35,7 @@ add_executable(JustAnotherChessEngine main.cpp
         Knight.h
         Rook.cpp
         Rook.h
+        Pawn.cpp
+        Pawn.h
 )
 target_link_libraries(JustAnotherChessEngine ${wxWidgets_LIBRARIES})
